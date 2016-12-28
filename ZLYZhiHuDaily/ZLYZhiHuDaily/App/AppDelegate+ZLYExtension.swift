@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack
+import SwiftyJSON
 
 extension AppDelegate {
     func initWindow() {
