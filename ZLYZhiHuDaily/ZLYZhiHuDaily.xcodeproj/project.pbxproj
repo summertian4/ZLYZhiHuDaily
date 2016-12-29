@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		201749007639605C13BA5E71 /* Pods_ZLYZhiHuDailyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8935C7FC6975A6FE231CF2 /* Pods_ZLYZhiHuDailyUITests.framework */; };
+		821D96AD1E14F3BD00442BAE /* ZLYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D96AC1E14F3BD00442BAE /* ZLYNavigationController.swift */; };
+		821D96B01E14F66600442BAE /* ZLYGlobalTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D96AF1E14F66600442BAE /* ZLYGlobalTool.swift */; };
+		821D96B31E14FAB000442BAE /* UIColor+ZLYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D96B21E14FAB000442BAE /* UIColor+ZLYExtension.swift */; };
+		821D96B51E15026A00442BAE /* String+ZLYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D96B41E15026A00442BAE /* String+ZLYExtension.swift */; };
+		821D96B71E15114D00442BAE /* Date+ZLYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821D96B61E15114D00442BAE /* Date+ZLYExtension.swift */; };
 		8253855C1E13A26600E24FEF /* ZLYDailyNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8253855B1E13A26600E24FEF /* ZLYDailyNews.swift */; };
 		82B1BB681E126AE200B870AA /* ZLYViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB671E126AE200B870AA /* ZLYViewController.swift */; };
 		82B1BB6B1E126DA800B870AA /* ZLYHomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB6A1E126DA800B870AA /* ZLYHomepageViewController.swift */; };
@@ -50,6 +55,11 @@
 		50EEDC36E781D50DF47D5301 /* Pods-ZLYZhiHuDaily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLYZhiHuDaily.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZLYZhiHuDaily/Pods-ZLYZhiHuDaily.debug.xcconfig"; sourceTree = "<group>"; };
 		5A0D311CFDAF54EBF62ADFAF /* Pods-ZLYZhiHuDaily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLYZhiHuDaily.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZLYZhiHuDaily/Pods-ZLYZhiHuDaily.release.xcconfig"; sourceTree = "<group>"; };
 		5D8935C7FC6975A6FE231CF2 /* Pods_ZLYZhiHuDailyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZLYZhiHuDailyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		821D96AC1E14F3BD00442BAE /* ZLYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYNavigationController.swift; sourceTree = "<group>"; };
+		821D96AF1E14F66600442BAE /* ZLYGlobalTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYGlobalTool.swift; sourceTree = "<group>"; };
+		821D96B21E14FAB000442BAE /* UIColor+ZLYExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ZLYExtension.swift"; sourceTree = "<group>"; };
+		821D96B41E15026A00442BAE /* String+ZLYExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+ZLYExtension.swift"; sourceTree = "<group>"; };
+		821D96B61E15114D00442BAE /* Date+ZLYExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+ZLYExtension.swift"; sourceTree = "<group>"; };
 		8253855B1E13A26600E24FEF /* ZLYDailyNews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYDailyNews.swift; sourceTree = "<group>"; };
 		82B1BB671E126AE200B870AA /* ZLYViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYViewController.swift; sourceTree = "<group>"; };
 		82B1BB691E126B2700B870AA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -126,6 +136,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		821D96AE1E14F62A00442BAE /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				821D96AF1E14F66600442BAE /* ZLYGlobalTool.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		821D96B11E14FA9F00442BAE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				821D96B21E14FAB000442BAE /* UIColor+ZLYExtension.swift */,
+				821D96B41E15026A00442BAE /* String+ZLYExtension.swift */,
+				821D96B61E15114D00442BAE /* Date+ZLYExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		82B1BB651E126ABE00B870AA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				82B1BB671E126AE200B870AA /* ZLYViewController.swift */,
+				821D96AC1E14F3BD00442BAE /* ZLYNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -175,6 +204,7 @@
 		82B7B2F61E10C14200BB3E05 /* ZLYZhiHuDaily */ = {
 			isa = PBXGroup;
 			children = (
+				821D96AE1E14F62A00442BAE /* Tool */,
 				82B7B32C1E10C3B900BB3E05 /* Base */,
 				82B7B3281E10C2E800BB3E05 /* Homepage */,
 				82B7B3251E10C1AC00BB3E05 /* App */,
@@ -242,6 +272,7 @@
 		82B7B32C1E10C3B900BB3E05 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				821D96B11E14FA9F00442BAE /* Extension */,
 				82B1BB791E13892400B870AA /* Service */,
 				82B7B32D1E10C3B900BB3E05 /* Model */,
 				82B7B32E1E10C3B900BB3E05 /* View */,
@@ -551,15 +582,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				821D96B51E15026A00442BAE /* String+ZLYExtension.swift in Sources */,
 				82B1BB6D1E126E7600B870AA /* AppDelegate+ZLYExtension.swift in Sources */,
 				82B1BB681E126AE200B870AA /* ZLYViewController.swift in Sources */,
+				821D96B71E15114D00442BAE /* Date+ZLYExtension.swift in Sources */,
 				8253855C1E13A26600E24FEF /* ZLYDailyNews.swift in Sources */,
 				82B7B3271E10C1AC00BB3E05 /* AppDelegate.swift in Sources */,
 				82B1BB711E127DDF00B870AA /* ZLYTableViewCell.swift in Sources */,
 				82B1BB7B1E13893F00B870AA /* ZLYNewsService.swift in Sources */,
+				821D96B01E14F66600442BAE /* ZLYGlobalTool.swift in Sources */,
 				82B1BB6B1E126DA800B870AA /* ZLYHomepageViewController.swift in Sources */,
 				82B1BB6F1E1271A900B870AA /* ZLYNews.swift in Sources */,
+				821D96B31E14FAB000442BAE /* UIColor+ZLYExtension.swift in Sources */,
 				82B1BB771E12809900B870AA /* ZLYNewsCell.swift in Sources */,
+				821D96AD1E14F3BD00442BAE /* ZLYNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

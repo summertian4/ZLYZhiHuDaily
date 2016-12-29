@@ -19,6 +19,7 @@ class ZLYDailyNews: Mappable {
     }
     
     func mapping(map: Map) {
+        date <- map["date"]
         stories <- map["stories"]
         topStories <- map["top_stories"]
     }

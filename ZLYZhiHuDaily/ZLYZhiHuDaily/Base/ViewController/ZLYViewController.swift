@@ -13,6 +13,7 @@ class ZLYViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         print("\(self) did load")
     }
     

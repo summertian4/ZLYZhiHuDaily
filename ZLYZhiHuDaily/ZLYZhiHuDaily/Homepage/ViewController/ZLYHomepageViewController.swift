@@ -11,8 +11,10 @@ import SnapKit
 
 class ZLYHomepageViewController: ZLYViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var tableview: UITableView = UITableView(frame: CGRect(), style: UITableViewStyle.grouped)
-    private var news: Array<Array<ZLYNews>> = Array<Array<ZLYNews>>()
+    private var tableview: UITableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.grouped)
+    private var dailyNews: Array<ZLYDailyNews>? = Array<ZLYDailyNews>()
+    
+    private var tableHeaderHeight: CGFloat = 45
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +23,8 @@ class ZLYHomepageViewController: ZLYViewController, UITableViewDelegate, UITable
     
     private func fetchData() {
         ZLYNewsService.fetchLastNews(success: { (lastNews) in
-            print("\(lastNews)")
-            if let stories = lastNews?.stories {
-                self.news.append(stories)
+            if let lastNews = lastNews {
+                self.dailyNews?.append(lastNews)
                 self.configSubviews()
             }
         }, failure: { (error) in
@@ -36,6 +37,7 @@ class ZLYHomepageViewController: ZLYViewController, UITableViewDelegate, UITable
         self.tableview.backgroundColor = UIColor.brown
         self.tableview.delegate = self
         self.tableview.dataSource = self
+        self.tableview.tableFooterView = UIView()
         self.tableview.register(ZLYNewsCell.self, forCellReuseIdentifier: ZLYNewsCell.identifier)
         self.tableview.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(self.view)
@@ -47,21 +49,51 @@ class ZLYHomepageViewController: ZLYViewController, UITableViewDelegate, UITable
     // MARK: - UITableViewDataSource & UITableViewDelegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.news.count
+        return (self.dailyNews?.count)!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.news[section].count
+        if let count = self.dailyNews?[section].stories?.count {
+            return count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: ZLYNewsCell.identifier, for: indexPath) as! ZLYNewsCell
-        cell.model = self.news[indexPath.section][indexPath.row]
+        if let model = self.dailyNews?[indexPath.section].stories?[indexPath.row] {
+            cell.model = model
+        }
         return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.tableHeaderHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.frame = CGRect(x: 0, y: 0, width: ZLYGlobalTool.screenWidth!, height: self.tableHeaderHeight)
+        headerView.backgroundColor = ZLYGlobalTool.themeColor
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: ZLYGlobalTool.screenWidth!, height: self.tableHeaderHeight))
+        label.textColor = UIColor.white
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.systemFont(ofSize: 14)
+        
+        if let dateStr = self.dailyNews?[section].date {
+            let string = Date.date(fromyyyyMMMMdd: dateStr)?.MMMM月dd日EEEE
+            label.text = string
+        }
+        
+        headerView.addSubview(label)
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-    
 }
