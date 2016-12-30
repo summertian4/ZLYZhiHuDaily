@@ -55,7 +55,7 @@ class ZLYNewsCell: ZLYTableViewCell {
             make.left.equalTo(self.contentView).offset(10)
             make.height.equalTo(0.5)
         }
-        self.lineView.backgroundColor = UIColor(colorLiteralRed: 0.05, green: 0.05, blue: 0.05, alpha: 1)
+        self.lineView.backgroundColor = UIColor(colorLiteralRed: 0.02, green: 0.02, blue: 0.02, alpha: 0.5)
         self.titleImageView.backgroundColor = UIColor.black
     }
     

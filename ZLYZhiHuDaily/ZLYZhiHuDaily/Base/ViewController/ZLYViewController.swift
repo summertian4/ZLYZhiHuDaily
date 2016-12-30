@@ -14,6 +14,7 @@ class ZLYViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.automaticallyAdjustsScrollViewInsets = false
         print("\(self) did load")
     }
     

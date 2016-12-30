@@ -8,45 +8,89 @@
 
 import UIKit
 import SnapKit
+import MJRefresh
 
 class ZLYHomepageViewController: ZLYViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var tableview: UITableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.grouped)
+    private var tableView: UITableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
     private var dailyNews: Array<ZLYDailyNews>? = Array<ZLYDailyNews>()
     
     private var tableHeaderHeight: CGFloat = 45
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fetchData()
+        self.configSubviews()
+        self.fetchTodayData()
     }
     
-    private func fetchData() {
+    // MARK: - ========================= Data Config =========================
+    
+    private func fetchTodayData() {
         ZLYNewsService.fetchLastNews(success: { (lastNews) in
             if let lastNews = lastNews {
-                self.dailyNews?.append(lastNews)
-                self.configSubviews()
+                var newDailyNews: Array<ZLYDailyNews>? = Array<ZLYDailyNews>()
+                newDailyNews?.append(lastNews)
+                self.dailyNews = newDailyNews
+                self.refreshTableView()
             }
         }, failure: { (error) in
             print("\(error)")
         })
     }
     
-    private func configSubviews() {
-        self.view.addSubview(self.tableview)
-        self.tableview.backgroundColor = UIColor.brown
-        self.tableview.delegate = self
-        self.tableview.dataSource = self
-        self.tableview.tableFooterView = UIView()
-        self.tableview.register(ZLYNewsCell.self, forCellReuseIdentifier: ZLYNewsCell.identifier)
-        self.tableview.snp.makeConstraints { (make) in
-            make.leading.trailing.equalTo(self.view)
-            make.top.bottom.equalTo(self.view)
-        }
-        self.tableview.reloadData()
+    @objc private func refreshData() {
+        self.fetchTodayData()
     }
     
-    // MARK: - UITableViewDataSource & UITableViewDelegate
+    func fetchMoreData() {
+        if let dateStr = self.dailyNews?.last?.date {
+            ZLYNewsService.fetchBeforeNews(dateStr: dateStr, success: { (lastNews) in
+                if let lastNews = lastNews {
+                    self.dailyNews?.append(lastNews)
+                    self.refreshTableView()
+                }
+            }, failure: { (error) in
+                print("\(error)")
+                self.refreshTableView()
+            })
+        }
+    }
+    
+    // MARK: - ========================= UI Config =========================
+    
+    private func configSubviews() {
+        self.view.addSubview(self.tableView)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
+        self.tableView.register(ZLYNewsCell.self, forCellReuseIdentifier: ZLYNewsCell.identifier)
+        self.tableView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalTo(self.view)
+            make.bottom.equalTo(self.view)
+            make.top.equalTo(self.topLayoutGuide.snp.bottom)
+        }
+        self.configRefreshUI()
+        self.refreshTableView()
+    }
+    
+    func refreshTableView() {
+        self.tableView.mj_header.endRefreshing()
+        self.tableView.mj_footer.endRefreshing()
+        self.tableView.reloadData()
+    }
+    
+    private func configRefreshUI() {
+        // 添加下拉刷新
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { 
+            self.refreshData()
+        })
+        // 添加上拉
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            self.fetchMoreData()
+        })
+    }
+    
+    // MARK: - ========================= UITableViewDataSource & UITableViewDelegate =========================
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return (self.dailyNews?.count)!
@@ -60,7 +104,7 @@ class ZLYHomepageViewController: ZLYViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: ZLYNewsCell.identifier, for: indexPath) as! ZLYNewsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ZLYNewsCell.identifier, for: indexPath) as! ZLYNewsCell
         if let model = self.dailyNews?[indexPath.section].stories?[indexPath.row] {
             cell.model = model
         }
