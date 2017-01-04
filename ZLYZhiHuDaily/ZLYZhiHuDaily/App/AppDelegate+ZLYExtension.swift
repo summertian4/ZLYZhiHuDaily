@@ -8,12 +8,15 @@
 
 import Foundation
 import CocoaLumberjack
+import SwiftyJSON
 
 extension AppDelegate {
     func initWindow() {
         self.window = UIWindow()
         self.window?.backgroundColor = UIColor.white
-        self.window?.rootViewController = ZLYHomepageViewController()
         self.window?.makeKeyAndVisible()
+        let homepageVC = ZLYHomepageViewController()
+        let nav = ZLYNavigationController(rootViewController: homepageVC)
+        self.window?.rootViewController = nav
     }
 }
