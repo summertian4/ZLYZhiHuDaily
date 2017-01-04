@@ -17,6 +17,8 @@
 		826E6F621E164D71006B1EC6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826E6F601E164D00006B1EC6 /* MJRefresh.framework */; };
 		826E6F641E165479006B1EC6 /* ZLYHomepageViewController+ZLYLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E6F631E165479006B1EC6 /* ZLYHomepageViewController+ZLYLayout.swift */; };
 		826E6F661E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E6F651E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift */; };
+		826E6F681E166690006B1EC6 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826E6F671E166690006B1EC6 /* SDCycleScrollView.framework */; };
+		826E6F6A1E1666E3006B1EC6 /* ZLYCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E6F691E1666E3006B1EC6 /* ZLYCycleScrollView.swift */; };
 		82B1BB681E126AE200B870AA /* ZLYViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB671E126AE200B870AA /* ZLYViewController.swift */; };
 		82B1BB6B1E126DA800B870AA /* ZLYHomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB6A1E126DA800B870AA /* ZLYHomepageViewController.swift */; };
 		82B1BB6D1E126E7600B870AA /* AppDelegate+ZLYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB6C1E126E7600B870AA /* AppDelegate+ZLYExtension.swift */; };
@@ -67,6 +69,8 @@
 		826E6F601E164D00006B1EC6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJRefresh.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ZLYZhiHuDaily-cklpwymrknmnitdhbhnpslksvihu/Build/Products/Debug-iphoneos/MJRefresh/MJRefresh.framework"; sourceTree = "<group>"; };
 		826E6F631E165479006B1EC6 /* ZLYHomepageViewController+ZLYLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ZLYHomepageViewController+ZLYLayout.swift"; sourceTree = "<group>"; };
 		826E6F651E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ZLYHomepageViewController+ZLYDelage.swift"; sourceTree = "<group>"; };
+		826E6F671E166690006B1EC6 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "Pods/../build/Debug-iphoneos/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
+		826E6F691E1666E3006B1EC6 /* ZLYCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYCycleScrollView.swift; sourceTree = "<group>"; };
 		82B1BB671E126AE200B870AA /* ZLYViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYViewController.swift; sourceTree = "<group>"; };
 		82B1BB691E126B2700B870AA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		82B1BB6A1E126DA800B870AA /* ZLYHomepageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYHomepageViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				826E6F681E166690006B1EC6 /* SDCycleScrollView.framework in Frameworks */,
 				826E6F621E164D71006B1EC6 /* MJRefresh.framework in Frameworks */,
 				F8FEF83780AAFEF913ABEABD /* Pods_ZLYZhiHuDaily.framework in Frameworks */,
 			);
@@ -123,6 +128,7 @@
 		1EF51967BF570E37FF36824B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				826E6F671E166690006B1EC6 /* SDCycleScrollView.framework */,
 				826E6F601E164D00006B1EC6 /* MJRefresh.framework */,
 				0ED85FAA5AB4AC0AE7FB22F7 /* Pods_ZLYZhiHuDaily.framework */,
 				E31D5DC42FE5B42D8B6EE92E /* Pods_ZLYZhiHuDailyTests.framework */,
@@ -275,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				82B1BB761E12809900B870AA /* ZLYNewsCell.swift */,
+				826E6F691E1666E3006B1EC6 /* ZLYCycleScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -594,6 +601,7 @@
 			files = (
 				821D96B51E15026A00442BAE /* String+ZLYExtension.swift in Sources */,
 				82B1BB6D1E126E7600B870AA /* AppDelegate+ZLYExtension.swift in Sources */,
+				826E6F6A1E1666E3006B1EC6 /* ZLYCycleScrollView.swift in Sources */,
 				82B1BB681E126AE200B870AA /* ZLYViewController.swift in Sources */,
 				821D96B71E15114D00442BAE /* Date+ZLYExtension.swift in Sources */,
 				826E6F661E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift in Sources */,
@@ -752,6 +760,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A59RPD6993;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SDCycleScrollView",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZLYZhiHuDaily/APP/PrefixHeader.pch";
 				INFOPLIST_FILE = ZLYZhiHuDaily/Info.plist;
@@ -770,6 +782,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = A59RPD6993;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SDCycleScrollView",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZLYZhiHuDaily/APP/PrefixHeader.pch";
 				INFOPLIST_FILE = ZLYZhiHuDaily/Info.plist;

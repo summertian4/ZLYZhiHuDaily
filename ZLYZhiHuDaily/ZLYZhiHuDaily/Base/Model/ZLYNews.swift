@@ -11,9 +11,12 @@ import ObjectMapper
 
 class ZLYNews: Mappable {
     var images: Array<String>? = Array<String>()
+    // topStories 使用
+    var image: String = ""
+    
     var type: Int = 0
     var news_id: Int = 0
-    var title: String? = ""
+    var title: String = ""
     
     required init?(map: Map) {
         
@@ -21,6 +24,7 @@ class ZLYNews: Mappable {
     
     func mapping(map: Map) {
         images <- map["images"]
+        image <- map["image"]
         type <- map["type"]
         news_id <- map["id"]
         title <- map["title"]

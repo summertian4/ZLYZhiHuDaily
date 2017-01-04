@@ -10,12 +10,18 @@ import UIKit
 
 class ZLYGlobalTool: NSObject {
     
-    static var screenWidth: CGFloat? {
-        return UIApplication.shared.keyWindow?.bounds.width
+    static var screenWidth: CGFloat {
+        if let width = UIApplication.shared.keyWindow?.bounds.width {
+            return width
+        }
+        return 375.0
     }
     
-    static var screenHeight: CGFloat? {
-        return UIApplication.shared.keyWindow?.bounds.height
+    static var screenHeight: CGFloat {
+        if let height = UIApplication.shared.keyWindow?.bounds.height {
+            return height
+        }
+        return 667.0
     }
     
     static var themeColor = UIColor.zly_hex("00b7ee")

@@ -14,8 +14,9 @@ extension AppDelegate {
     func initWindow() {
         self.window = UIWindow()
         self.window?.backgroundColor = UIColor.white
-        let nav = ZLYNavigationController(rootViewController: ZLYHomepageViewController())
-        self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
+        let homepageVC = ZLYHomepageViewController()
+        let nav = ZLYNavigationController(rootViewController: homepageVC)
+        self.window?.rootViewController = nav
     }
 }

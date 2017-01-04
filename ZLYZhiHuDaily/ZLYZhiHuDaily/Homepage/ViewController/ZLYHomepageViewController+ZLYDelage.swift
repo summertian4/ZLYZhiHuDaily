@@ -17,12 +17,35 @@ extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = self.dailyNews?[section].stories?.count {
+            if section == 0 {
+                return count + 1
+            }
             return count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ZLYCycleScrollView.identifier, for: indexPath)
+                let cycleScrollView = cell.viewWithTag(7878)
+                if cycleScrollView == nil {
+                    cell.addSubview(self.cycleScrollView)
+                    self.cycleScrollView.tag = 7878
+                    self.cycleScrollView.snp.makeConstraints({ (make) in
+                        make.edges.equalTo(cell)
+                    })
+                }
+                return cell
+            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: ZLYNewsCell.identifier, for: indexPath) as! ZLYNewsCell
+            if let model = self.dailyNews?[indexPath.section].stories?[indexPath.row - 1] {
+                cell.model = model
+            }
+            return cell;
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: ZLYNewsCell.identifier, for: indexPath) as! ZLYNewsCell
         if let model = self.dailyNews?[indexPath.section].stories?[indexPath.row] {
             cell.model = model
@@ -31,6 +54,9 @@ extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(section == 0) {
+            return 0
+        }
         return self.tableHeaderHeight
     }
     
@@ -39,13 +65,16 @@ extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if(section == 0) {
+            return nil
+        }
         let headerView = UIView()
-        headerView.frame = CGRect(x: 0, y: 0, width: ZLYGlobalTool.screenWidth!, height: self.tableHeaderHeight)
+        headerView.frame = CGRect(x: 0, y: 0, width: ZLYGlobalTool.screenWidth, height: self.tableHeaderHeight)
         headerView.backgroundColor = ZLYGlobalTool.themeColor
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: ZLYGlobalTool.screenWidth!, height: self.tableHeaderHeight))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: ZLYGlobalTool.screenWidth, height: self.tableHeaderHeight))
         label.textColor = UIColor.white
         label.textAlignment = NSTextAlignment.center
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 16)
         
         if let dateStr = self.dailyNews?[section].date {
             let string = Date.date(fromyyyyMMMMdd: dateStr)?.MMMM月dd日EEEE
@@ -57,6 +86,9 @@ extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            return self.cycleScrollView.height
+        }
         return 120
     }
 }

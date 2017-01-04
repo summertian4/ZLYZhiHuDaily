@@ -10,14 +10,15 @@ import UIKit
 import SnapKit
 
 class ZLYHomepageViewController: ZLYViewController {
-    
     var tableView: UITableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
+    var tableHeaderHeight: CGFloat = 45
+    var cycleScrollView: ZLYCycleScrollView = ZLYCycleScrollView()
+    
     var dailyNews: Array<ZLYDailyNews>? = Array<ZLYDailyNews>()
     
-    var tableHeaderHeight: CGFloat = 45
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.conifgStatusBar()
         self.configSubviews()
         self.fetchTodayData()
     }
@@ -30,6 +31,7 @@ class ZLYHomepageViewController: ZLYViewController {
                 var newDailyNews: Array<ZLYDailyNews>? = Array<ZLYDailyNews>()
                 newDailyNews?.append(lastNews)
                 self.dailyNews = newDailyNews
+                self.cycleScrollView.topStories = lastNews.topStories
                 self.refreshTableView()
             }
         }, failure: { (error) in

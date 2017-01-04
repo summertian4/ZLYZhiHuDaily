@@ -18,10 +18,9 @@ extension ZLYHomepageViewController {
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         self.tableView.register(ZLYNewsCell.self, forCellReuseIdentifier: ZLYNewsCell.identifier)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: ZLYCycleScrollView.identifier)
         self.tableView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalTo(self.view)
-            make.bottom.equalTo(self.view)
-            make.top.equalTo(self.topLayoutGuide.snp.bottom)
+            make.edges.equalTo(self.view)
         }
         self.configRefreshUI()
         self.refreshTableView()
@@ -42,5 +41,11 @@ extension ZLYHomepageViewController {
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             self.fetchMoreData()
         })
+    }
+    
+    func conifgStatusBar() {
+        let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as! NSObject
+        let statusBar = statusBarWindow.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = ZLYGlobalTool.themeColor;
     }
 }
