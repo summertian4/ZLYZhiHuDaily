@@ -13,17 +13,28 @@ extension ZLYHomepageViewController {
     // MARK: - ========================= UI Config =========================
     
     func configSubviews() {
+        // tableview
         self.view.addSubview(self.tableView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         self.tableView.register(ZLYNewsCell.self, forCellReuseIdentifier: ZLYNewsCell.identifier)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: ZLYCycleScrollView.identifier)
+        self.tableView.showsVerticalScrollIndicator = false
         self.tableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view)
+            make.left.right.bottom.equalTo(self.view)
+            make.top.equalTo(self.topLayoutGuide.snp.bottom)
         }
         self.configRefreshUI()
         self.refreshTableView()
+        
+        // nav bar
+        self.view.addSubview(self.fakeNavBar)
+        self.fakeNavBar.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(self.view)
+            make.height.equalTo(self.fakeNavBar.height)
+        }
+        self.fakeNavBar.title = "今日新闻"
     }
     
     func refreshTableView() {
@@ -41,11 +52,5 @@ extension ZLYHomepageViewController {
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             self.fetchMoreData()
         })
-    }
-    
-    func conifgStatusBar() {
-        let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as! NSObject
-        let statusBar = statusBarWindow.value(forKey: "statusBar") as! UIView
-        statusBar.backgroundColor = ZLYGlobalTool.themeColor;
     }
 }

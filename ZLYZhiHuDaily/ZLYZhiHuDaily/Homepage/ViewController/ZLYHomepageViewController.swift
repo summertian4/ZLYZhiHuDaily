@@ -10,15 +10,17 @@ import UIKit
 import SnapKit
 
 class ZLYHomepageViewController: ZLYViewController {
-    var tableView: UITableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
     var tableHeaderHeight: CGFloat = 45
-    var cycleScrollView: ZLYCycleScrollView = ZLYCycleScrollView()
     
     var dailyNews: Array<ZLYDailyNews>? = Array<ZLYDailyNews>()
     
+    var fakeNavBar: ZLYFakeNavBar = ZLYFakeNavBar()
+    var tableView: UITableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
+    
+    var cycleScrollView: ZLYCycleScrollView = ZLYCycleScrollView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.conifgStatusBar()
         self.configSubviews()
         self.fetchTodayData()
     }

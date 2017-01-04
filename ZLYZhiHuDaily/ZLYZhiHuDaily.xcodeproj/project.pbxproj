@@ -19,6 +19,7 @@
 		826E6F661E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E6F651E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift */; };
 		826E6F681E166690006B1EC6 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826E6F671E166690006B1EC6 /* SDCycleScrollView.framework */; };
 		826E6F6A1E1666E3006B1EC6 /* ZLYCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E6F691E1666E3006B1EC6 /* ZLYCycleScrollView.swift */; };
+		82A15E041E1CF5DC00D5FD74 /* ZLYFakeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A15E031E1CF5DC00D5FD74 /* ZLYFakeNavBar.swift */; };
 		82B1BB681E126AE200B870AA /* ZLYViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB671E126AE200B870AA /* ZLYViewController.swift */; };
 		82B1BB6B1E126DA800B870AA /* ZLYHomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB6A1E126DA800B870AA /* ZLYHomepageViewController.swift */; };
 		82B1BB6D1E126E7600B870AA /* AppDelegate+ZLYExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B1BB6C1E126E7600B870AA /* AppDelegate+ZLYExtension.swift */; };
@@ -71,6 +72,7 @@
 		826E6F651E16551E006B1EC6 /* ZLYHomepageViewController+ZLYDelage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ZLYHomepageViewController+ZLYDelage.swift"; sourceTree = "<group>"; };
 		826E6F671E166690006B1EC6 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "Pods/../build/Debug-iphoneos/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		826E6F691E1666E3006B1EC6 /* ZLYCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYCycleScrollView.swift; sourceTree = "<group>"; };
+		82A15E031E1CF5DC00D5FD74 /* ZLYFakeNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYFakeNavBar.swift; sourceTree = "<group>"; };
 		82B1BB671E126AE200B870AA /* ZLYViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYViewController.swift; sourceTree = "<group>"; };
 		82B1BB691E126B2700B870AA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		82B1BB6A1E126DA800B870AA /* ZLYHomepageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLYHomepageViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				82B1BB761E12809900B870AA /* ZLYNewsCell.swift */,
 				826E6F691E1666E3006B1EC6 /* ZLYCycleScrollView.swift */,
+				82A15E031E1CF5DC00D5FD74 /* ZLYFakeNavBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				82B1BB6B1E126DA800B870AA /* ZLYHomepageViewController.swift in Sources */,
 				82B1BB6F1E1271A900B870AA /* ZLYNews.swift in Sources */,
 				826E6F641E165479006B1EC6 /* ZLYHomepageViewController+ZLYLayout.swift in Sources */,
+				82A15E041E1CF5DC00D5FD74 /* ZLYFakeNavBar.swift in Sources */,
 				821D96B31E14FAB000442BAE /* UIColor+ZLYExtension.swift in Sources */,
 				82B1BB771E12809900B870AA /* ZLYNewsCell.swift in Sources */,
 				821D96AD1E14F3BD00442BAE /* ZLYNavigationController.swift in Sources */,

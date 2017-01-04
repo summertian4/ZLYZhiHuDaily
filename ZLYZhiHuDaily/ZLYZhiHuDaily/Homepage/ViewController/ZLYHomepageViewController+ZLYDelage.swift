@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource {
+extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     // MARK: - ========================= UITableViewDataSource & UITableViewDelegate =========================
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,5 +90,31 @@ extension ZLYHomepageViewController: UITableViewDelegate, UITableViewDataSource 
             return self.cycleScrollView.height
         }
         return 120
+    }
+    
+    // MARK: - ========================= UIScrollViewDelegate =========================
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var alpha: CGFloat = 0
+        let offsetY = self.tableView.contentOffset.y
+        if offsetY < 0 {
+            self.fakeNavBar.mode = ZLYFakeNavBar.Mode.Translucence(alpha: 0.0)
+            return
+        }
+        
+        if offsetY >= self.cycleScrollView.height {
+            self.fakeNavBar.mode = ZLYFakeNavBar.Mode.Translucence(alpha: 1.0)
+        }
+        
+        if let count = self.dailyNews?.first?.stories?.count {
+            let changPointY = self.cycleScrollView.height + CGFloat(count * 120)
+            if offsetY >= changPointY {
+                self.fakeNavBar.mode = ZLYFakeNavBar.Mode.OnlyStatusBar
+                return
+            }
+        }
+        
+        alpha = CGFloat(fabsf(Float(offsetY)) / Float(self.cycleScrollView.height))
+        self.fakeNavBar.mode = ZLYFakeNavBar.Mode.Translucence(alpha: alpha)
     }
 }
